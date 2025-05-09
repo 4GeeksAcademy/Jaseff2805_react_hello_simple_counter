@@ -8,11 +8,33 @@ import "bootstrap"
 // index.css'
 import '../styles/index.css'
 
-// components
-import Home from './components/Home';
+// fontawesome
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Home/>
-  </React.StrictMode>,
-)
+// components
+// Importación del componente creado
+import SecondsCounter from './components/SecondsCounter';
+
+// Contenedor de la aplicación
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// Definición de Variables globales
+let seconds = 0;
+
+// Función para actualizar el contador
+setInterval(() => {
+  seconds++;
+  renderCounter();
+},1000);
+
+// Función para renderizar el contador
+const renderCounter = () => {
+  root.render(
+    <React.StrictMode>
+      <SecondsCounter seconds={seconds} />
+    </React.StrictMode>,
+  );
+};
+
+// Inicializar el contador
+renderCounter();
